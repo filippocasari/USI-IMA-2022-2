@@ -141,7 +141,8 @@ def get_length_name_methods(klass):
 
 
 # use re.findall('\w+', s) to get all alphanumeric substrings in s
-
+import time
+start=time.time()
 for root, dirs, files in os.walk(input_path, topdown=False):
     #print(f'root: {root} \t dirs: {dirs} \t files: {files}')
     for file in files:
@@ -193,16 +194,18 @@ for root, file_name in zip(roots, java_files):
         dict["EX"].append(max_ex)
         dict["BCM"].append(blocks)
 
-        dict["NML"].append(average_length_names_methods)
+        dict["NML"].append(round(average_length_names_methods,3))
         dict["WRD"].append(count_word_sub_max)
         if(number_statements == 0):
             dict["DCM"].append(0.)
         else:
-            dict["DCM"].append(counter_words_comments/number_statements)
+            dict["DCM"].append(round(counter_words_comments/number_statements, 3))
 
         # print(klass)
         # print("\n\n\n\n\n\n")
 
+end = time.time()
+print(f"execution time: {end-start}")
 frame = pd.DataFrame(dict)
 print(frame)
 
