@@ -1,3 +1,4 @@
+import time
 import re
 from struct import calcsize
 import javalang
@@ -141,8 +142,7 @@ def get_length_name_methods(klass):
 
 
 # use re.findall('\w+', s) to get all alphanumeric substrings in s
-import time
-start=time.time()
+start = time.time()
 for root, dirs, files in os.walk(input_path, topdown=False):
     #print(f'root: {root} \t dirs: {dirs} \t files: {files}')
     for file in files:
@@ -194,22 +194,40 @@ for root, file_name in zip(roots, java_files):
         dict["EX"].append(max_ex)
         dict["BCM"].append(blocks)
 
-        dict["NML"].append(round(average_length_names_methods,3))
+        dict["NML"].append(round(average_length_names_methods, 3))
         dict["WRD"].append(count_word_sub_max)
         if(number_statements == 0):
             dict["DCM"].append(0.)
         else:
-            dict["DCM"].append(round(counter_words_comments/number_statements, 3))
+            dict["DCM"].append(
+                round(counter_words_comments/number_statements, 3))
 
         # print(klass)
         # print("\n\n\n\n\n\n")
 
 end = time.time()
-print(f"execution time: {end-start}")
+
 frame = pd.DataFrame(dict)
 print(frame)
 
-path_csv = 'CSV/'
-if(os.path.isdir(path_csv) == False):
-    os.mkdir(path_csv)
-frame.to_csv(path_csv+'feature_vectors.csv')
+print(f"execution time: {round(end-start, 4)} seconds")
+'''writing CSV file for features vector'''
+ans = input("Write CSV? Write yes or no:  ")
+if(ans == 'yes'):
+    path_csv = 'CSV/'
+    if(os.path.isdir(path_csv) == False):
+        os.mkdir(path_csv)
+    else:
+        print("Dir CSV already exists")
+    try:
+        frame.to_csv(path_csv+'feature_vectors.csv')
+        print("csv written")
+    except:
+        print("csv NOT written")
+
+
+elif(ans == 'no'):
+    print("CSV file should be already written")
+
+else:
+    print("You chose to not write Csv file")
