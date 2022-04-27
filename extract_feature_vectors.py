@@ -4,7 +4,7 @@ import javalang
 import pandas as pd
 import numpy as np
 import os
-input_path = './resources'
+input_path = './resources/defects4j-checkout-closure-1f'
 array_of_path = []
 java_files = []
 roots = []
@@ -17,15 +17,15 @@ def get_number_of_methods(klass):
 
 def get_statements(klass):
     max = 0
-    number_statements=0.
+    number_statements = 0.
     for method in klass.methods:
         j = 0
         for i in method.filter(javalang.tree.Statement):
             j += 1
-            number_statements+=1.
+            number_statements += 1.
         if(max < j):
             max = j
-    return max,number_statements
+    return max, number_statements
 
 
 def get_number_of_fields(klass):
@@ -106,14 +106,14 @@ def get_exceptions(klass):
 
 def get_block(klass):
     count_doc_class = 0
-    count_word_sub_max=0
-    counter_words_comments=0
+    count_word_sub_max = 0
+    counter_words_comments = 0
     if(klass.documentation != None):
         count_doc_class = 1
         s = klass.documentation
-        sub=re.findall('\w+', s)
-        count_word_sub_max=len(sub)
-        counter_words_comments+=len(s.split())
+        sub = re.findall('\w+', s)
+        count_word_sub_max = len(sub)
+        counter_words_comments += len(s.split())
 
     # print(len(klass.documentation))
 
@@ -121,10 +121,10 @@ def get_block(klass):
         if(method.documentation != None):
             count_doc_class += 1
             s = method.documentation
-            counter_words_comments+=len(s.split())
-            sub=re.findall('\w+', s)
-            if(count_word_sub_max< len(sub)):
-                count_word_sub_max=len(sub)
+            counter_words_comments += len(s.split())
+            sub = re.findall('\w+', s)
+            if(count_word_sub_max < len(sub)):
+                count_word_sub_max = len(sub)
 
     return count_doc_class, count_word_sub_max, counter_words_comments
 
@@ -140,9 +140,6 @@ def get_length_name_methods(klass):
     return np.mean(array_methods_name)
 
 
-    
-
-
 # use re.findall('\w+', s) to get all alphanumeric substrings in s
 
 for root, dirs, files in os.walk(input_path, topdown=False):
@@ -155,7 +152,7 @@ for root, dirs, files in os.walk(input_path, topdown=False):
 
 classes = []
 dict = {"class": [], "MTH": [], "FLD": [], "RFC": [],
-        "INT": [], "SZ": [], "CPX": [], "EX": [], "RET": [], "BCM": [], "NML": [], "WRD":[], "DCM":[]}
+        "INT": [], "SZ": [], "CPX": [], "EX": [], "RET": [], "BCM": [], "NML": [], "WRD": [], "DCM": []}
 i = 0
 
 for root, file_name in zip(roots, java_files):
@@ -164,7 +161,6 @@ for root, file_name in zip(roots, java_files):
     data = open(name).read()
     tree_tmp = javalang.parse.parse(data)
     # print(tree_tmp.)
-    
 
     for path, klass in tree_tmp.filter(javalang.tree.ClassDeclaration):
         '''if(isinstance(klass, javalang.tree.ClassDeclaration) and klass.name == file_name.replace('.java', '')):'''
@@ -199,7 +195,7 @@ for root, file_name in zip(roots, java_files):
 
         dict["NML"].append(average_length_names_methods)
         dict["WRD"].append(count_word_sub_max)
-        if(number_statements==0):
+        if(number_statements == 0):
             dict["DCM"].append(0.)
         else:
             dict["DCM"].append(counter_words_comments/number_statements)
@@ -210,7 +206,7 @@ for root, file_name in zip(roots, java_files):
 frame = pd.DataFrame(dict)
 print(frame)
 
-path_csv='CSV/'
+path_csv = 'CSV/'
 if(os.path.isdir(path_csv) == False):
     os.mkdir(path_csv)
 frame.to_csv(path_csv+'feature_vectors.csv')
