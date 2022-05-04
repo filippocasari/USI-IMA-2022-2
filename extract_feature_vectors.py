@@ -141,75 +141,83 @@ def get_length_name_methods(klass):
 
 
 # use re.findall('\w+', s) to get all alphanumeric substrings in s
-import time
-start=time.time()
-for root, dirs, files in os.walk(input_path, topdown=False):
-    #print(f'root: {root} \t dirs: {dirs} \t files: {files}')
-    for file in files:
-        if(file.endswith(".java")):
-            java_files.append(file)
-            roots.append(root)
-# print(java_files)
+def return_first_step(writing_csv=True):
+    import time
+    start=time.time()
+    for root, dirs, files in os.walk(input_path, topdown=False):
+        #print(f'root: {root} \t dirs: {dirs} \t files: {files}')
+        for file in files:
+            if(file.endswith(".java")):
+                java_files.append(file)
+                roots.append(root)
+    # print(java_files)
 
-classes = []
-dict = {"class": [], "MTH": [], "FLD": [], "RFC": [],
-        "INT": [], "SZ": [], "CPX": [], "EX": [], "RET": [], "BCM": [], "NML": [], "WRD": [], "DCM": []}
-i = 0
+    classes = []
+    dict = {"class": [], "MTH": [], "FLD": [], "RFC": [],
+            "INT": [], "SZ": [], "CPX": [], "EX": [], "RET": [], "BCM": [], "NML": [], "WRD": [], "DCM": []}
+    i = 0
 
-for root, file_name in zip(roots, java_files):
-    name = os.path.join(root, file_name)
+    for root, file_name in zip(roots, java_files):
+        name = os.path.join(root, file_name)
 
-    data = open(name).read()
-    tree_tmp = javalang.parse.parse(data)
-    # print(tree_tmp.)
+        data = open(name).read()
+        tree_tmp = javalang.parse.parse(data)
+        # print(tree_tmp.)
 
-    for path, klass in tree_tmp.filter(javalang.tree.ClassDeclaration):
-        '''if(isinstance(klass, javalang.tree.ClassDeclaration) and klass.name == file_name.replace('.java', '')):'''
+        for path, klass in tree_tmp.filter(javalang.tree.ClassDeclaration):
+            '''if(isinstance(klass, javalang.tree.ClassDeclaration) and klass.name == file_name.replace('.java', '')):'''
+            if(klass.name != file_name.replace('.java', '')):
+                continue
+            dict["class"].append(klass.name)
+            # print(klass.attrs)
+            methods = get_number_of_methods(klass)
+            fields = get_number_of_fields(klass)
+            public_methods = get_number_of_public_methods(klass.methods)
+            interfaces = get_number_of_interfaces(klass)
+            called_methods = get_called_methods(klass.methods)
+            max_statements, number_statements = get_statements(klass)
+            max_cpx = get_cpx(klass)
+            max_return = get_return(klass)
+            max_ex = get_exceptions(klass)
+            blocks, count_word_sub_max, counter_words_comments = get_block(klass)
+            average_length_names_methods = get_length_name_methods(klass)
+            # print(max_cpx)
+            #print(f"number of called method: {called_methods}")
+            #print(f'number of interfaces: {interfaces}')
+            #print(f"number of fields: {fields}")
+            #print(f"number of method: {methods}")
+            dict["MTH"].append(methods)
+            dict["FLD"].append(fields)
+            dict["RFC"].append(public_methods + called_methods)
+            dict["INT"].append(interfaces)
+            dict["SZ"].append(max_statements)
+            dict["CPX"].append(max_cpx)
+            dict["RET"].append(max_return)
+            dict["EX"].append(max_ex)
+            dict["BCM"].append(blocks)
 
-        dict["class"].append(klass.name)
-        # print(klass.attrs)
-        methods = get_number_of_methods(klass)
-        fields = get_number_of_fields(klass)
-        public_methods = get_number_of_public_methods(klass.methods)
-        interfaces = get_number_of_interfaces(klass)
-        called_methods = get_called_methods(klass.methods)
-        max_statements, number_statements = get_statements(klass)
-        max_cpx = get_cpx(klass)
-        max_return = get_return(klass)
-        max_ex = get_exceptions(klass)
-        blocks, count_word_sub_max, counter_words_comments = get_block(klass)
-        average_length_names_methods = get_length_name_methods(klass)
-        # print(max_cpx)
-        #print(f"number of called method: {called_methods}")
-        #print(f'number of interfaces: {interfaces}')
-        #print(f"number of fields: {fields}")
-        #print(f"number of method: {methods}")
-        dict["MTH"].append(methods)
-        dict["FLD"].append(fields)
-        dict["RFC"].append(public_methods + called_methods)
-        dict["INT"].append(interfaces)
-        dict["SZ"].append(max_statements)
-        dict["CPX"].append(max_cpx)
-        dict["RET"].append(max_return)
-        dict["EX"].append(max_ex)
-        dict["BCM"].append(blocks)
+            dict["NML"].append(round(average_length_names_methods,3))
+            dict["WRD"].append(count_word_sub_max)
+            if(number_statements == 0):
+                dict["DCM"].append(0.)
+            else:
+                dict["DCM"].append(round(counter_words_comments/number_statements, 3))
 
-        dict["NML"].append(round(average_length_names_methods,3))
-        dict["WRD"].append(count_word_sub_max)
-        if(number_statements == 0):
-            dict["DCM"].append(0.)
-        else:
-            dict["DCM"].append(round(counter_words_comments/number_statements, 3))
+            # print(klass)
+            # print("\n\n\n\n\n\n")
 
-        # print(klass)
-        # print("\n\n\n\n\n\n")
+    end = time.time()
+    print(f"execution time: {end-start}")
+    frame = pd.DataFrame(dict)
+    #print(frame.sort_values('class').head())
+    #print(frame)
 
-end = time.time()
-print(f"execution time: {end-start}")
-frame = pd.DataFrame(dict)
-print(frame)
+    path_csv = 'CSV/'
+    if(writing_csv):
+        if(os.path.isdir(path_csv) == False):
+            os.mkdir(path_csv)
+        frame.to_csv(path_csv+'feature_vectors.csv')
+    return frame
 
-path_csv = 'CSV/'
-if(os.path.isdir(path_csv) == False):
-    os.mkdir(path_csv)
-frame.to_csv(path_csv+'feature_vectors.csv')
+return_first_step()
+
