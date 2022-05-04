@@ -2,6 +2,7 @@ from extract_feature_vectors import return_first_step
 import os
 import pandas as pd
 import numpy as np
+import time
 #frame = return_first_step(False)
 frame = pd.read_csv('./CSV/feature_vectors.csv')
 #print(frame.head())
@@ -29,6 +30,7 @@ def read_content(file):
     
     return new_strings
 
+start= time.time()
 buggy_classes=[]
 for root, dirs, files in os.walk(buggy_class_path, topdown=False):
         #print(f'root: {root} \t dirs: {dirs} \t files: {files}')
@@ -64,6 +66,8 @@ path_csv = './CSV/'
 write_csv=True
 if(write_csv):
     frame.to_csv(path_csv+'new_feature_vector_file.csv')
+end=time.time()
+print(f"time execution second step: {end-start}")
 
 
 
