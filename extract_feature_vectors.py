@@ -1,3 +1,4 @@
+import time
 import re
 from struct import calcsize
 import javalang
