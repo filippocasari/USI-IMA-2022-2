@@ -208,7 +208,7 @@ def return_first_step(writing_csv=True):
             # print("\n\n\n\n\n\n")
 
     end = time.time()
-    print(f"execution time: {end-start}")
+    print(f"first step execution time: {end-start}")
     frame = pd.DataFrame(dict)
     #print(frame.sort_values('class').head())
     #print(frame)
@@ -220,5 +220,5 @@ def return_first_step(writing_csv=True):
         frame.to_csv(path_csv+'feature_vectors.csv')
     return frame
 
-return_first_step()
+return_first_step(False)
 
