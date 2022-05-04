@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import time
 #frame = return_first_step(False)
-
+print("starting second step")
 frame = pd.read_csv('./CSV/feature_vectors.csv')
 '''read frame from csv dir'''
 # print(frame.head())
