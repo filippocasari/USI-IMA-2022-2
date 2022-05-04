@@ -153,10 +153,10 @@ def return_first_step(writing_csv=True):
                 roots.append(root)
     # print(java_files)
 
-    classes = []
+    
     dict = {"class": [], "MTH": [], "FLD": [], "RFC": [],
             "INT": [], "SZ": [], "CPX": [], "EX": [], "RET": [], "BCM": [], "NML": [], "WRD": [], "DCM": []}
-    i = 0
+    
 
     for root, file_name in zip(roots, java_files):
         name = os.path.join(root, file_name)
