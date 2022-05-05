@@ -44,6 +44,7 @@ def get_number_of_public_methods(methods):
 
 
 def get_called_methods(methods):
+    '''get the number of called mathods'''
     number_of_called_methods = 0
     for i in methods:
         for i, member in i.filter(javalang.tree.MethodInvocation):
@@ -53,6 +54,7 @@ def get_called_methods(methods):
 
 
 def get_number_of_interfaces(klass):
+    '''get the number of interfaces'''
     if((klass.implements) == None):
         return 0
     else:
