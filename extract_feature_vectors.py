@@ -142,7 +142,16 @@ def get_length_name_methods(klass):
 
 
 # use re.findall('\w+', s) to get all alphanumeric substrings in s
-def return_first_step(writing_csv=True):
+def return_first_step(writing_csv=False):
+    """ doing the extraction of feature vectors, first step of the project
+
+    Args:
+        writing_csv (bool, optional): if provided (equal to True) it is gonna write a\
+            csv file. Defaults to False.
+
+    Returns:
+        pd.Dataframe: frame of the feature vectors
+    """    ''''''
     import time
     start=time.time()
     for root, dirs, files in os.walk(input_path, topdown=False):
@@ -220,5 +229,10 @@ def return_first_step(writing_csv=True):
         frame.to_csv(path_csv+'feature_vectors.csv')
     return frame
 
-return_first_step(False)
+import sys
+if(sys.argv[1]=='True'):
+    return_first_step(True)
+else:
+    return_first_step(False)
+
 
