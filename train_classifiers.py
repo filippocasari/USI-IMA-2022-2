@@ -49,7 +49,7 @@ weights = {0: weights_class_zero, 1: weights_class_one}
 # print(training_set_X)
 
 
-def Dec_Tree(X_train, X_test, y_train, y_test, weights=None):
+def Dec_Tree(X_train: np.array, X_test, y_train, y_test, weights=None):
     criterion_dec_tree = ['gini', 'entropy']
     splitter_dec_tree = ['best', 'random']
     list1 = [None]
@@ -85,7 +85,20 @@ def Dec_Tree(X_train, X_test, y_train, y_test, weights=None):
     return best_f1_score, best_params, best_prec_rec_f1
 
 
-def SVM(X_train, X_test, y_train, y_test, weights=None, kernel = 'linear'):
+def SVM(X_train: np.array, X_test: np.array, y_train: np.array, y_test: np.array, weights=None, kernel = 'linear'):
+    """ Support Vector Machine (for binary classification)
+
+    Args:
+        X_train (np.array): _description_
+        X_test (np.array): _description_
+        y_train (np.array): _description_
+        y_test (np.array): _description_
+        weights (_type_, optional): must be a list. Defaults to None.
+        kernel (str, optional): kernel, look at sklearn doc. Defaults to 'linear'.
+
+    Returns:
+        list: list of object
+    """    ''''''
     tolerances=[1e-1, 1e-2]
     max_iterations=[-1]
     C_array=[1.0, 2.0, 3.0, 4.0]
@@ -116,6 +129,13 @@ def SVM(X_train, X_test, y_train, y_test, weights=None, kernel = 'linear'):
 
 
 def write_results(best_params, best_prec_rec_f1, name='' ):
+    """ write the results with the best parameters
+
+    Args:
+        best_params (array): 
+        best_prec_rec_f1 (array): _description_
+        name (str, optional): name of the method. Defaults to ''.
+    """    ''''''
     print("WITH "+name)
     #crit, split, max_dep, min_sampl = best_params
     
@@ -152,7 +172,20 @@ def NeuralNetwork(X_train, X_test, y_train, y_test):
     return best_f1_score, best_params, best_prec_rec_f1
 
 
-def RandomForest(X_train, X_test, y_train, y_test, weights=None):
+def RandomForest(X_train: np.array, X_test, y_train, y_test, weights=None):
+    """Random Forest, tested several parameters
+
+    Args:
+        X_train (_type_): _description_
+        X_test (_type_): _description_
+        y_train (_type_): _description_
+        y_test (_type_): _description_
+        weights (_type_, optional): _description_. Defaults to None.
+
+    Returns:
+        _type_: _description_
+    """    ''''''
+    
     n_estimators_array=[100, 150, 200, 300]
     criterions=['gini', 'entropy']
     min_samples_splits=[2, 3, 4]
