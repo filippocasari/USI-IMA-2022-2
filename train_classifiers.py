@@ -1,3 +1,4 @@
+from ensurepip import bootstrap
 from sklearn.model_selection import GridSearchCV, train_test_split
 #from sklearn import DecisionTreeClassifier, GaussianNB, SVC, MLPClassifier, RandomForestClassifier
 from sklearn.metrics import precision_recall_fscore_support
@@ -9,6 +10,7 @@ import os
 import pandas as pd
 import numpy as np
 import time
+from sklearn.ensemble import RandomForestClassifier
 
 
 verbose = False
@@ -150,6 +152,36 @@ def NeuralNetwork(X_train, X_test, y_train, y_test):
     return best_f1_score, best_params, best_prec_rec_f1
 
 
+def RandomForest(X_train, X_test, y_train, y_test, weights=None):
+    n_estimators_array=[100, 150, 200, 300]
+    criterions=['gini', 'entropy']
+    min_samples_splits=[2, 3, 4]
+    max_features_array=['auto', 'sqrt', 'log2']
+    bootstraps=[True, False]
+    best_params = {'n_estimators': 0., 'criterion': 0.,'max_features':'auto','bootstrap':True, 'min_samples_splits':2  }
+    best_prec_rec_f1=[]
+    best_f1_score=0.
+    for n_estinamtors in n_estimators_array:
+        for criterion in criterions:
+            for min_samples_split in min_samples_splits:
+                for max_features in max_features_array:
+                    for bootstrap in bootstraps:
+                        model = RandomForestClassifier(n_estimators=n_estinamtors, criterion=criterion, \
+                            min_samples_split=min_samples_split,\
+                                 bootstrap=bootstrap, max_features=max_features, class_weight=weights)
+                        model.fit(X=X_train, y=y_train)
+                        pred= model.predict(X_test)
+                        prec_rec_f1 = precision_recall_fscore_support(
+                        y_test, pred,  average='binary', zero_division=0)
+                        
+                        if(best_f1_score < prec_rec_f1[2]):
+                            best_f1_score = prec_rec_f1[2]
+                            best_params['bootstrap'], best_params['criterion'], best_params['max_features'], best_params['min_samples_splits'], best_params['n_estimators'] = \
+                                bootstrap, criterion, max_features, min_samples_split, n_estinamtors
+                            best_prec_rec_f1 = prec_rec_f1
+    return best_f1_score, best_params, best_prec_rec_f1
+
+
 best_f1_score, best_params, best_prec_rec_f1 = \
     Dec_Tree(training_set_X, test_set_X, y_test=test_set_Y,
              y_train=training_set_Y, weights=None)
@@ -213,4 +245,26 @@ best_f1_score, best_params, best_prec_rec_f1 = \
     NeuralNetwork(X_train=training_set_X, X_test=test_set_X, y_test=test_set_Y,
              y_train=training_set_Y)
 write_results(best_params, best_prec_rec_f1, 'MLPClassifier')
+
+
+
+start=time.time()
+best_f1_score, best_params, best_prec_rec_f1 = \
+    RandomForest(X_train=training_set_X, X_test=test_set_X, y_test=test_set_Y,
+             y_train=training_set_Y)
+write_results(best_params, best_prec_rec_f1, 'Random Forest unbalanced')
+end=time.time()
+print("time execution: ", end-start)
+start=time.time()
+best_f1_score, best_params, best_prec_rec_f1 = \
+    RandomForest(X_train=training_set_X, X_test=test_set_X, y_test=test_set_Y,
+             y_train=training_set_Y, weights=weights)
+write_results(best_params, best_prec_rec_f1, 'Random Forest balanced')
+end=time.time()
+print("time execution: ", end-start)
+
+
+
+
+
 
