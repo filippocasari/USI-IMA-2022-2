@@ -11,13 +11,29 @@ import pandas as pd
 import numpy as np
 import time
 from sklearn.ensemble import RandomForestClassifier
+import sys
 
+if(len(sys.argv)>1):
+    if(sys.argv[1]=='True'):
+        verbose = True
+    else:
+        verbose = False
+    if(sys.argv[2]=='True'):
+        write_csv=True
+    else:
+        write_csv=False
+        
+else:
+    
+    verbose = False
+    write_csv=False
+    
+path_for_CSV='./RESULTS'
 
-verbose = False
 frame = pd.read_csv('./CSV/new_feature_vector_file.csv')
 
 y = frame['buggy'].values
-X = frame.drop(columns=['buggy', 'Unnamed: 0.1', 'Unnamed: 0', 'class']).values
+X = frame.drop(columns=['buggy', 'class']).values
 weights_bool = y == 0
 
 weights = X[weights_bool]
@@ -142,6 +158,16 @@ def write_results(best_params, best_prec_rec_f1, name='' ):
     print("Best Values for this model: ", best_params)
     print(f"precision: {best_prec_rec_f1[0]}, recall: {best_prec_rec_f1[1]},\
          f1: {best_prec_rec_f1[2]}")
+    if(write_csv):
+        string_to_write= "WITH "+name+"\nBest Values for this model: "+ str(best_params)+f"\nprecision: {best_prec_rec_f1[0]}, recall: {best_prec_rec_f1[1]},\
+            f1: {best_prec_rec_f1[2]}\n"
+        if(os.path.isdir(path_for_CSV) == False):
+                os.mkdir(path_for_CSV)
+        f = open(path_for_CSV+'/results.txt', "a")
+        f.write(string_to_write)
+        f.close()
+        
+    
     
 def NeuralNetwork(X_train, X_test, y_train, y_test):
     activations=['identity', 'logistic', 'tanh', 'relu']
@@ -219,6 +245,7 @@ best_f1_score, best_params, best_prec_rec_f1 = \
     Dec_Tree(training_set_X, test_set_X, y_test=test_set_Y,
              y_train=training_set_Y, weights=None)
 write_results(best_params, best_prec_rec_f1, 'Decision Tree unbalanced')
+
 
 
 best_f1_score, best_params, best_prec_rec_f1 = \

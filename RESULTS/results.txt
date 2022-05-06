@@ -1,0 +1,18 @@
+WITH Decision Tree unbalanced
+Best Values for this model: {'criterion': 'entropy', 'splitting': 'random', 'max depth': 24, 'min_samples': 24}
+precision: 0.7142857142857143, recall: 0.6666666666666666,            f1: 0.689655172413793
+WITH Decision Tree balanced
+Best Values for this model: {'criterion': 'gini', 'splitting': 'random', 'max depth': 21, 'min_samples': 4}
+precision: 0.625, recall: 0.6666666666666666,            f1: 0.6451612903225806
+WITH SVC unbalanced
+Best Values for this model: {'tol': 0.1, 'max_iter': -1, 'C': 4.0, 'random_state': 1}
+precision: 0.42857142857142855, recall: 0.2,            f1: 0.27272727272727276
+WITH MLPClassifier
+Best Values for this model: {'activation': 'identity', 'solver': 'sgd', 'shuffle': False, 'learning_rate': 'constant'}
+precision: 0.4666666666666667, recall: 0.4666666666666667,            f1: 0.4666666666666667
+WITH Random Forest unbalanced
+Best Values for this model: {'n_estimators': 100, 'criterion': 'gini', 'max_features': 'log2', 'bootstrap': True, 'min_samples_splits': 3}
+precision: 0.6666666666666666, recall: 0.4,            f1: 0.5
+WITH Random Forest balanced
+Best Values for this model: {'n_estimators': 100, 'criterion': 'entropy', 'max_features': 'log2', 'bootstrap': True, 'min_samples_splits': 4}
+precision: 0.75, recall: 0.4,            f1: 0.5217391304347827
