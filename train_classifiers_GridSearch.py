@@ -1,6 +1,5 @@
 
 from sklearn.model_selection import GridSearchCV, train_test_split
-#from sklearn import DecisionTreeClassifier, GaussianNB, SVC, MLPClassifier, RandomForestClassifier
 from sklearn.metrics import precision_recall_fscore_support
 from sklearn import tree
 from sklearn.naive_bayes import GaussianNB
@@ -13,12 +12,21 @@ import time
 from sklearn.ensemble import RandomForestClassifier
 import sys
 
-if(len(sys.argv)>1):
+'''This is an other way to Training and finding the best hyperparamters\
+    It uses the sklearn class so-called GridSearch'''
+
+
+if(len(sys.argv)>1 and len(sys.argv)<4):
+    '''if any args is given'''
+    
     if(sys.argv[1]=='True'):
+        '''set verbose '''
+      
         verbose = True
     else:
         verbose = False
     if(sys.argv[2]=='True'):
+        '''set if this program has to write a csv file'''
         write_csv=True
     else:
         write_csv=False
