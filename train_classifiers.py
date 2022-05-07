@@ -66,6 +66,18 @@ weights = {0: weights_class_zero, 1: weights_class_one}
 
 
 def Dec_Tree(X_train: np.array, X_test, y_train, y_test, weights=None):
+    """_summary_
+
+    Args:
+        X_train (np.array): _description_
+        X_test (_type_): _description_
+        y_train (_type_): _description_
+        y_test (_type_): _description_
+        weights (_type_, optional): _description_. Defaults to None.
+
+    Returns:
+        _type_: _description_
+    """    ''''''
     criterion_dec_tree = ['gini', 'entropy']
     splitter_dec_tree = ['best', 'random']
     list1 = [None]
@@ -300,6 +312,9 @@ pred = clf.predict(test_set_X)
 print(precision_recall_fscore_support(
                         test_set_Y, pred,  average='binary', zero_division=0))
 print(clf.best_params_)'''
+
+
+
 
 best_f1_score, best_params, best_prec_rec_f1 = \
     NeuralNetwork(X_train=training_set_X, X_test=test_set_X, y_test=test_set_Y,
