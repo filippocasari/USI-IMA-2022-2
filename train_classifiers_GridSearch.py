@@ -12,6 +12,7 @@ import time
 from sklearn.ensemble import RandomForestClassifier
 import sys
 import os.path
+from joblib import dump, load
 
 '''This is an other way to Training and finding the best hyperparamters\
     It uses the sklearn class so-called GridSearch'''
@@ -38,6 +39,9 @@ else:
     write_csv = False
 
 path_for_CSV = './RESULTS'
+path_models= './MODELS'
+if(os.path.isdir(path_models) == False):
+            os.mkdir(path_models)
 
 frame = pd.read_csv('./CSV/new_feature_vector_file.csv')
 
@@ -73,7 +77,7 @@ weights = {0: weights_class_zero, 1: weights_class_one}
 
 # print(training_set_X)
 
-path_for_CSV = './RESULTS'
+
 
 
 def GridSearchFun(model, metric, parameters, X_train, X_test, Y_train, Y_test, model_name='', weights=None):
@@ -108,16 +112,17 @@ def GridSearchFun(model, metric, parameters, X_train, X_test, Y_train, Y_test, m
         f = open(path_for_CSV+'/results_grid_search.txt', "a")
         f.write(string_to_write)
         f.close()
+    return clf.best_estimator_
 
 
 priors = (None, weights)
 model = GaussianNB()
 parameters = {'priors': priors, 'var_smoothing': (1e-9, 1e-8, 1e-7)
               }
-GridSearchFun(model, 'f1', parameters, training_set_X, test_set_X,
+best_estimator=GridSearchFun(model, 'f1', parameters, training_set_X, test_set_X,
               training_set_Y, test_set_Y, 'Gaussian Naive Bayes')
 
-
+dump(best_estimator, path_models+'/GaussianNB.joblib') 
 criterion_dec_tree = ('gini', 'entropy')
 splitter_dec_tree = ('best', 'random')
 list1 = [None]
@@ -128,9 +133,9 @@ model = tree.DecisionTreeClassifier()
 parameters = {'criterion': criterion_dec_tree, 'splitter': splitter_dec_tree,
               'max_depth': max_depth_dec_tree, 'min_samples_split': min_samples_split_dec_tree,
               'class_weight': (None, weights)}
-GridSearchFun(model, 'f1', parameters, training_set_X, test_set_X,
+best_estimator= GridSearchFun(model, 'f1', parameters, training_set_X, test_set_X,
               training_set_Y, test_set_Y, 'Decision Tree ')
-
+dump(best_estimator, path_models+'/DecisionTree.joblib') 
 
 
 activations=('identity', 'logistic', 'tanh', 'relu')
@@ -140,8 +145,10 @@ shuffles=(True, False)
 parameters = {'activation': activations, 'solver':solvers,
               'learning_rate': learning_rates, 'shuffle': shuffles}
 model = MLPClassifier()
-GridSearchFun(model, 'f1', parameters, training_set_X, test_set_X,
+best_estimator=GridSearchFun(model, 'f1', parameters, training_set_X, test_set_X,
               training_set_Y, test_set_Y, 'Neural Networks')
+
+dump(best_estimator, path_models+'/MPLClassifier.joblib') 
 
 n_estimators_array=(100, 150, 200, 300)
 criterions=('gini', 'entropy')
@@ -151,10 +158,10 @@ bootstraps=(True, False)
 model =RandomForestClassifier()
 parameters = {'n_estimators': n_estimators_array, 'criterion':criterions,
               'min_samples_split': min_samples_splits, 'max_features': max_features_array, 'bootstrap': bootstraps}
-GridSearchFun(model, 'f1', parameters, training_set_X, test_set_X,
+best_estimator = GridSearchFun(model, 'f1', parameters, training_set_X, test_set_X,
               training_set_Y, test_set_Y, 'Random Forest')
 
-
+dump(best_estimator, path_models+'/RandomForestClassifier.joblib') 
 
 max_iterations=(1000, 2000)
 C_array=(1., 2., 3., 4.)
@@ -165,8 +172,10 @@ multi_classes=('ovr', 'crammer_singer')
 model = LinearSVC()
 parameters = {'max_iter':max_iterations, 'C': C_array, 'penalty': penalties, \
     'loss': losses, 'multi_class': multi_classes}
-GridSearchFun(model, 'f1', parameters, training_set_X, test_set_X,
+
+
+best_estimator = GridSearchFun(model, 'f1', parameters, training_set_X, test_set_X,
               training_set_Y, test_set_Y, 'Support Vector Machine (linear)')
 
-
+dump(best_estimator, path_models+'/LinearSVC.joblib') 
 
