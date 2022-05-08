@@ -1,0 +1,23 @@
+Best parameters for Gaussian Naive Bayes are : 
+{'priors': None, 'var_smoothing': 1e-07} 
+ f1= 0.18181818181818182,             precision: 0.3333333333333333, recall= 0.125
+ ****************************
+ Best parameters for Decision Tree  are : 
+{'class_weight': None, 'criterion': 'entropy', 'max_depth': 16, 'min_samples_split': 3, 'splitter': 'random'} 
+ f1= 0.3243243243243243,             precision: 0.2857142857142857, recall= 0.375
+ ****************************
+ Best parameters for Neural Networks are : 
+{'activation': 'relu', 'learning_rate': 'constant', 'shuffle': False, 'solver': 'adam'} 
+ f1= 0.3225806451612903,             precision: 0.3333333333333333, recall= 0.3125
+ ****************************
+ Best parameters for Random Forest are : 
+{'bootstrap': True, 'criterion': 'entropy', 'max_features': 'log2', 'min_samples_split': 3, 'n_estimators': 150} 
+ f1= 0.26086956521739124,             precision: 0.42857142857142855, recall= 0.1875
+ ****************************
+
+ Best parameters for Support Vector Machine (linear) are : 
+{'C': 4.0, 'loss': 'squared_hinge', 'max_iter': 2000, 'multi_class': 'crammer_singer', 'penalty': 'l1'} 
+ f1= 0.37288135593220334,             precision: 0.2619047619047619, recall= 0.6470588235294118
+ ****************************
+ 
+ 
