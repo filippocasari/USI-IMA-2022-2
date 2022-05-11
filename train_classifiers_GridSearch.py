@@ -94,7 +94,7 @@ def GridSearchFun(model, metric, parameters, X_train, X_test, Y_train, Y_test, m
         model_name (str, optional): model's name. Defaults to ''.
     """    ''''''
     print(f"training model: {model_name}")
-    clf = GridSearchCV(model, parameters, scoring=metric, n_jobs=-1)
+    clf = GridSearchCV(model, parameters, scoring=['f1', 'recall', 'precision'], n_jobs=-1,  refit='f1')
     clf.fit(X_train, Y_train)
     pred = clf.predict(X_test)
     prec, recall, f1beta, _ = precision_recall_fscore_support(
@@ -119,7 +119,7 @@ priors = (None, weights)
 model = GaussianNB()
 parameters = {'priors': priors, 'var_smoothing': (1e-9, 1e-8, 1e-7)
               }
-best_estimator=GridSearchFun(model, 'f1', parameters, training_set_X, test_set_X,
+best_estimator=GridSearchFun(model, 'balanced_accuracy', parameters, training_set_X, test_set_X,
               training_set_Y, test_set_Y, 'Gaussian Naive Bayes')
 
 dump(best_estimator, path_models+'/GaussianNB.joblib') 
@@ -133,7 +133,7 @@ model = tree.DecisionTreeClassifier()
 parameters = {'criterion': criterion_dec_tree, 'splitter': splitter_dec_tree,
               'max_depth': max_depth_dec_tree, 'min_samples_split': min_samples_split_dec_tree,
               'class_weight': (None, weights)}
-best_estimator= GridSearchFun(model, 'f1', parameters, training_set_X, test_set_X,
+best_estimator= GridSearchFun(model, 'balanced_accuracy', parameters, training_set_X, test_set_X,
               training_set_Y, test_set_Y, 'Decision Tree ')
 dump(best_estimator, path_models+'/DecisionTree.joblib') 
 
@@ -145,7 +145,7 @@ shuffles=(True, False)
 parameters = {'activation': activations, 'solver':solvers,
               'learning_rate': learning_rates, 'shuffle': shuffles}
 model = MLPClassifier()
-best_estimator=GridSearchFun(model, 'f1', parameters, training_set_X, test_set_X,
+best_estimator=GridSearchFun(model, 'balanced_accuracy', parameters, training_set_X, test_set_X,
               training_set_Y, test_set_Y, 'Neural Networks')
 
 dump(best_estimator, path_models+'/MPLClassifier.joblib') 
@@ -158,7 +158,7 @@ bootstraps=(True, False)
 model =RandomForestClassifier()
 parameters = {'n_estimators': n_estimators_array, 'criterion':criterions,
               'min_samples_split': min_samples_splits, 'max_features': max_features_array, 'bootstrap': bootstraps}
-best_estimator = GridSearchFun(model, 'f1', parameters, training_set_X, test_set_X,
+best_estimator = GridSearchFun(model, 'balanced_accuracy', parameters, training_set_X, test_set_X,
               training_set_Y, test_set_Y, 'Random Forest')
 
 dump(best_estimator, path_models+'/RandomForestClassifier.joblib') 
@@ -174,7 +174,7 @@ parameters = {'max_iter':max_iterations, 'C': C_array, 'penalty': penalties, \
     'loss': losses, 'multi_class': multi_classes}
 
 
-best_estimator = GridSearchFun(model, 'f1', parameters, training_set_X, test_set_X,
+best_estimator = GridSearchFun(model, 'balanced_accuracy', parameters, training_set_X, test_set_X,
               training_set_Y, test_set_Y, 'Support Vector Machine (linear)')
 
 dump(best_estimator, path_models+'/LinearSVC.joblib') 
