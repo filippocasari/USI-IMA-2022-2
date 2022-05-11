@@ -139,6 +139,8 @@ Best parameters for Gaussian Naive Bayes are :
  f1= 0.380952380952381,             precision: 0.3333333333333333, recall= 0.4444444444444444
  ****************************
  
+
+ 
  Best parameters for Gaussian Naive Bayes are : 
 {'priors': None, 'var_smoothing': 1e-09} 
  f1= 0.42857142857142855,             precision: 0.42857142857142855, recall= 0.42857142857142855
