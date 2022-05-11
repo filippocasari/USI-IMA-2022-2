@@ -14,6 +14,9 @@ import sys
 import os.path
 from joblib import dump, load
 
+'''NOTES: for running the file: python3 "name_of_this_file" "args" '''
+
+
 '''This is an other way to Training and finding the best hyperparamters\
     It uses the sklearn class so-called GridSearch'''
 
