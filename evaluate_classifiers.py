@@ -10,7 +10,19 @@ from scipy.stats import wilcoxon
 import warnings
 warnings.filterwarnings("ignore")
 path_models= './MODELS/'
+
+
 def Cross_Validation_Scores(clf, X, y):
+    """Cross Validation function. returns scores (f1 score, precision, recall)
+
+    Args:
+        clf (_type_): model that must be validated
+        X (_type_): X: dataset
+        y (_type_): y: labels
+
+    Returns:
+        _type_: f1 score, precision, recall
+    """    ''''''
     f1_scores =[]
     prec_scores =[]
     rec_scores =[]
@@ -30,6 +42,18 @@ def Cross_Validation_Scores(clf, X, y):
 
 
 def print_results(f1, prec, rec, model):
+    """print the results
+
+    Args:
+        f1 (array of float): f1 score
+        prec (array of float): precision
+        rec (array of float): recall
+        model (str): model name
+
+    Returns:
+        str: string to print (or write into a file eventually)
+    """    ''''''
+    
     string_=f"For model {model}-> f1 score :{f1.mean()}, prec: {prec.mean()}, rec: {rec.mean()}\n\n"
     print(string_)
     return string_
@@ -95,8 +119,13 @@ f.write(string)
 
 f.close()
 
-w, p = wilcoxon(X, y=y)
+print(X.shape)
+print(y.shape)
+'''TODO: still working on it'''
+w, p = wilcoxon(X, np.zeros(y.shape))
 print(f"w: {w} , p: {p}")
+
+
 
 
 
