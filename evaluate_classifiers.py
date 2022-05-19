@@ -88,7 +88,7 @@ while(np.all(Y_test == 0)):
 #weights = {0: weights_class_zero, 1: weights_class_one}
 # print(weights)
 
-path_step_4 = '.step_4_results.txt'
+path_step_4 = 'step_4_results.txt'
 
 
 f = open(path_step_4, "w")
@@ -162,9 +162,9 @@ for name1 in models_names:
 models_f1 = pd.DataFrame(models)
 models_prec = pd.DataFrame(models_prec)
 models_rec = pd.DataFrame(models_rec)
-models_f1.to_csv('.f1_dataframe.csv')
-models_prec.to_csv('.prec_dataframe.csv')
-models_rec.to_csv('.rec_dataframe.csv')
+models_f1.to_csv('f1_dataframe.csv')
+models_prec.to_csv('prec_dataframe.csv')
+models_rec.to_csv('rec_dataframe.csv')
 
 
 
