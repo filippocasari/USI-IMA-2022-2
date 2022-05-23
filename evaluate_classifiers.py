@@ -189,24 +189,44 @@ models_rec = {'Random Forest': recalls[0], 'MPL': recalls[1],
 
 
 models_names = ['Random Forest', 'MPL', 'SVC', 'GaussNB', 'Decision Tree', 'Bias Classifier']
+set_combination =[]
+f = open("wilcoxon_tests.txt", "w")
 for name1 in models_names:
     for name2 in models_names:
+        if([name1, name2] in set_combination):
+            continue
+        else:
+            set_combination.append([name1, name2])
         if(name2 != name1):
             w, p = wilcoxon(models[name1], models[name2])
-            print(f"f1 couple [ {name1}, {name2} ], p value: {p}")
+            string = f"\n\nf1 couple [ {name1}, {name2} ], p value: {p}\n"
+            
             w, p = wilcoxon(models_prec[name1], models_prec[name2])
-            print(f" precision couple [ {name1}, {name2} ], p value: {p}")
+            string+=f"\nprecision couple [ {name1}, {name2} ], p value: {p}\n"
+            
             w, p = wilcoxon(models_rec[name1], models_rec[name2])
-            print(f"recall couple [ {name1}, {name2} ], p value: {p}")
+            string+=f"recall couple [ {name1}, {name2} ], p value: {p}\n"
+            print(string)
             print("\n ******************* \n")
-
+            
+            f.write(string)
+f.close()
 
 models_f1 = pd.DataFrame(models)
 models_prec = pd.DataFrame(models_prec)
 models_rec = pd.DataFrame(models_rec)
-models_f1.to_csv('f1_dataframe.csv')
-models_prec.to_csv('prec_dataframe.csv')
-models_rec.to_csv('rec_dataframe.csv')
+
+
+saving_plot = input("Saving csv? say 'yes' or press something: ")
+if(saving_plot == 'yes'):
+    saving_plot = True
+else:
+    saving_plot = False
+    
+if(saving_plot):
+    models_f1.to_csv('f1_dataframe.csv')
+    models_prec.to_csv('prec_dataframe.csv')
+    models_rec.to_csv('rec_dataframe.csv')
 
 
 
