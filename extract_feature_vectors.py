@@ -11,12 +11,27 @@ java_files = []
 roots = []
 
 
-def get_number_of_methods(klass):
+def get_number_of_methods(klass: javalang.tree.ClassDeclaration): 
+    """_summary_
 
-    return len(klass.methods)
+    Args:
+        klass (javalang.tree.ClassDeclaration): class to analyse
+
+    Returns:
+        int: length of methods
+    """
+    return len(klass.methods) 
 
 
-def get_statements(klass):
+def get_statements(klass: javalang.tree.ClassDeclaration) :
+    """ get number of class statements and the max of them 
+
+    Args:
+        klass (javalang.tree.ClassDeclaration): class
+
+    Returns:
+        int, float: class statements and the max of them 
+    """
     max = 0
     number_statements = 0.
     for method in klass.methods:
@@ -29,7 +44,15 @@ def get_statements(klass):
     return max, number_statements
 
 
-def get_number_of_fields(klass):
+def get_number_of_fields(klass) -> (int):
+    """_summary_
+
+    Args:
+        klass (_type_): _description_
+
+    Returns:
+        int: len of fields
+    """
     return len(klass.fields)
 
 
