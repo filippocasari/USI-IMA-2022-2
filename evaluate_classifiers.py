@@ -198,6 +198,7 @@ for name1 in models_names:
             print(f" precision couple [ {name1}, {name2} ], p value: {p}")
             w, p = wilcoxon(models_rec[name1], models_rec[name2])
             print(f"recall couple [ {name1}, {name2} ], p value: {p}")
+            print("\n ******************* \n")
 
 
 models_f1 = pd.DataFrame(models)
