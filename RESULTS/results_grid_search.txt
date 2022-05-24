@@ -1,66 +1,22 @@
 
  Best parameters for Gaussian Naive Bayes are : 
 {'priors': None, 'var_smoothing': 1e-09} 
- f1= 0.35714285714285715,             precision: 0.35714285714285715, recall= 0.35714285714285715
+ f1= 0.4444444444444445,             precision: 0.6, recall= 0.35294117647058826
  ****************************
  Best parameters for Decision Tree  are : 
-{'class_weight': None, 'criterion': 'entropy', 'max_depth': None, 'min_samples_split': 22, 'splitter': 'random'} 
- f1= 0.4827586206896552,             precision: 0.4666666666666667, recall= 0.5
+{'class_weight': None, 'criterion': 'gini', 'max_depth': 28, 'min_samples_split': 4, 'splitter': 'random'} 
+ f1= 0.41379310344827586,             precision: 0.5, recall= 0.35294117647058826
  ****************************
  Best parameters for Neural Networks are : 
-{'activation': 'relu', 'learning_rate': 'invscaling', 'max_iter': 200, 'shuffle': False, 'solver': 'adam'} 
- f1= 0.5185185185185186,             precision: 0.5384615384615384, recall= 0.5
+{'activation': 'relu', 'learning_rate': 'adaptive', 'max_iter': 400, 'shuffle': True, 'solver': 'adam'} 
+ f1= 0.36363636363636365,             precision: 0.6, recall= 0.2608695652173913
  ****************************
  Best parameters for Random Forest are : 
-{'bootstrap': False, 'criterion': 'entropy', 'max_features': 'sqrt', 'min_samples_split': 3, 'n_estimators': 100} 
- f1= 0.4615384615384615,             precision: 0.5, recall= 0.42857142857142855
- ****************************
- Best parameters for Support Vector Machine (linear) are : 
-{'loss': 'squared_hinge', 'multi_class': 'ovr', 'penalty': 'l2'} 
- f1= 0.36363636363636365,             precision: 0.5, recall= 0.2857142857142857
- ****************************
- Best parameters for Gaussian Naive Bayes are : 
-{'priors': None, 'var_smoothing': 1e-07} 
- f1= 0.5161290322580646,             precision: 0.5333333333333333, recall= 0.5
- ****************************
- Best parameters for Decision Tree  are : 
-{'class_weight': None, 'criterion': 'entropy', 'max_depth': 13, 'min_samples_split': 6, 'splitter': 'random'} 
- f1= 0.37837837837837834,             precision: 0.3333333333333333, recall= 0.4375
- ****************************
- Best parameters for Neural Networks are : 
-{'activation': 'tanh', 'learning_rate': 'constant', 'max_iter': 400, 'shuffle': True, 'solver': 'adam'} 
- f1= 0.5142857142857143,             precision: 0.6428571428571429, recall= 0.42857142857142855
- ****************************
- Best parameters for Random Forest are : 
-{'bootstrap': False, 'criterion': 'entropy', 'max_features': 'sqrt', 'min_samples_split': 3, 'n_estimators': 200} 
- f1= 0.5517241379310345,             precision: 0.6153846153846154, recall= 0.5
+{'bootstrap': True, 'criterion': 'entropy', 'max_features': 'auto', 'min_samples_split': 4, 'n_estimators': 100} 
+ f1= 0.4166666666666667,             precision: 0.7142857142857143, recall= 0.29411764705882354
  ****************************
  Best parameters for Support Vector Machine (linear) are : 
 {'loss': 'hinge', 'multi_class': 'crammer_singer', 'penalty': 'l2'} 
- f1= 0.28846153846153844,             precision: 0.17045454545454544, recall= 0.9375
- ****************************
-
-
-
- 
- Best parameters for Gaussian Naive Bayes are : 
-{'priors': None, 'var_smoothing': 1e-09} 
- f1= 0.5,             precision: 0.5384615384615384, recall= 0.4666666666666667
- ****************************
- Best parameters for Decision Tree  are : 
-{'class_weight': None, 'criterion': 'entropy', 'max_depth': 21, 'min_samples_split': 28, 'splitter': 'random'} 
- f1= 0.3,             precision: 0.6, recall= 0.2
- ****************************
- Best parameters for Neural Networks are : 
-{'activation': 'relu', 'learning_rate': 'invscaling', 'max_iter': 400, 'shuffle': True, 'solver': 'lbfgs'} 
- f1= 0.6250000000000001,             precision: 0.7142857142857143, recall= 0.5555555555555556
- ****************************
- Best parameters for Random Forest are : 
-{'bootstrap': True, 'criterion': 'gini', 'max_features': 'auto', 'min_samples_split': 2, 'n_estimators': 100} 
- f1= 0.4545454545454545,             precision: 0.7142857142857143, recall= 0.3333333333333333
- ****************************
- Best parameters for Support Vector Machine (linear) are : 
-{'loss': 'hinge', 'multi_class': 'crammer_singer', 'penalty': 'l1'} 
- f1= 0.4000000000000001,             precision: 0.4, recall= 0.4
+ f1= 0.3478260869565218,             precision: 0.6666666666666666, recall= 0.23529411764705882
  ****************************
  

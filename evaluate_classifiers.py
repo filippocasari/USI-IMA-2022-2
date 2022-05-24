@@ -64,7 +64,7 @@ frame = pd.read_csv('./CSV/new_feature_vector_file.csv')
 '''read the dataset'''
 
 y = frame['buggy'].values
-X = frame.drop(columns=['buggy', 'class']).values
+X = frame.drop(columns=['buggy', 'class', 'Unnamed: 0']).values
 
 
 
@@ -191,6 +191,9 @@ models_rec = {'Random Forest': recalls[0], 'MPL': recalls[1],
 models_names = ['Random Forest', 'MPL', 'SVC', 'GaussNB', 'Decision Tree', 'Bias Classifier']
 set_combination =[]
 f = open("wilcoxon_tests.txt", "w")
+dict_models_f1 ={'name_model':models_names, 'Random Forest':[], 'MPL':[], 'SVC':[], 'GaussNB':[], 'Decision Tree':[], 'Bias Classifier':[]}
+dict_models_prec ={'name_model':models_names, 'Random Forest':[], 'MPL':[], 'SVC':[], 'GaussNB':[], 'Decision Tree':[], 'Bias Classifier':[]}
+dict_models_rec ={'name_model':models_names, 'Random Forest':[], 'MPL':[], 'SVC':[], 'GaussNB':[], 'Decision Tree':[], 'Bias Classifier':[]}
 for name1 in models_names:
     for name2 in models_names:
         if([name1, name2] in set_combination):
@@ -200,21 +203,29 @@ for name1 in models_names:
         if(name2 != name1):
             w, p = wilcoxon(models[name1], models[name2])
             string = f"\n\nf1 couple [ {name1}, {name2} ], p value: {p}\n"
-            
+            dict_models_f1[name1].append(round(p, 4))
             w, p = wilcoxon(models_prec[name1], models_prec[name2])
             string+=f"\nprecision couple [ {name1}, {name2} ], p value: {p}\n"
-            
+            dict_models_prec[name1].append(round(p, 4))
             w, p = wilcoxon(models_rec[name1], models_rec[name2])
+            dict_models_rec[name1].append(round(p, 4))
             string+=f"recall couple [ {name1}, {name2} ], p value: {p}\n"
             print(string)
             print("\n ******************* \n")
             
             f.write(string)
+        else:
+            dict_models_f1[name1].append('-')
+            dict_models_prec[name1].append('-')
+            dict_models_rec[name1].append('-')
 f.close()
 
 models_f1 = pd.DataFrame(models)
 models_prec = pd.DataFrame(models_prec)
 models_rec = pd.DataFrame(models_rec)
+df_f1 = pd.DataFrame(dict_models_f1)
+df_prec = pd.DataFrame(dict_models_prec)
+df_rec = pd.DataFrame(dict_models_rec)
 
 
 saving_plot = input("Saving csv? say 'yes' or press something: ")
@@ -227,6 +238,11 @@ if(saving_plot):
     models_f1.to_csv('f1_dataframe.csv')
     models_prec.to_csv('prec_dataframe.csv')
     models_rec.to_csv('rec_dataframe.csv')
+#df_f1.to_csv('f1_wilcoxon.csv')
+#df_rec.to_csv('rec_wilcoxon.csv')
+#df_prec.to_csv('prec_wilcoxon.csv')
+
+
 
 
 

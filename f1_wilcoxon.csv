@@ -1,0 +1,7 @@
+,name_model,Random Forest,MPL,SVC,GaussNB,Decision Tree,Bias Classifier
+0,Random Forest,-,0.0,0.0,0.0,0.0,0.0
+1,MPL,0.0,-,0.0,0.0577,0.0,0.0
+2,SVC,0.0,0.0,-,0.0,0.86,0.0179
+3,GaussNB,0.0,0.0577,0.0,-,0.0,0.0
+4,Decision Tree,0.0,0.0,0.86,0.0,-,0.0
+5,Bias Classifier,0.0,0.0,0.0179,0.0,0.0,-

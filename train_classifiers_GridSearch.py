@@ -50,7 +50,7 @@ if(os.path.isdir(path_models) == False):
 frame = pd.read_csv('./CSV/new_feature_vector_file.csv')
 
 y = frame['buggy'].values
-X = frame.drop(columns=['buggy', 'class']).values
+X = frame.drop(columns=['buggy', 'class', 'Unnamed: 0']).values
 weights_bool = y == 0
 weights = X[weights_bool]
 weights_class_zero = (len(weights)/len(y))
