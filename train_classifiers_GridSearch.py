@@ -47,10 +47,10 @@ path_models = './MODELS'
 if(os.path.isdir(path_models) == False):
     os.mkdir(path_models)
 
-frame = pd.read_csv('./CSV/new_feature_vector_file.csv')
-
+frame = pd.read_csv('./CSV/new_feature_vector_file.csv').drop(columns=['Unnamed: 0', 'Unnamed: 0.1'])
+print(frame)
 y = frame['buggy'].values
-X = frame.drop(columns=['buggy', 'class', 'Unnamed: 0']).values
+X = frame.drop(columns=['buggy', 'class']).values
 weights_bool = y == 0
 weights = X[weights_bool]
 weights_class_zero = (len(weights)/len(y))
@@ -85,7 +85,7 @@ print(
 print(
     f"Len labels test: {len(test_set_Y)}, Len labels training set: {len(training_set_Y)}")
 print()
-assert(round(0.8 * len(X)) == len(training_set_X))
+assert(int(0.8 * len(X)) == len(training_set_X))
 weights = {0: weights_class_zero, 1: weights_class_one}
 '''ensure that the splitting is correct'''
 
@@ -127,7 +127,7 @@ def GridSearchFun(model, metric, parameters, X_train, X_test, Y_train, Y_test, m
         f = open(path_for_CSV+'/results_grid_search.txt', "a")
         f.write(string_to_write)
         f.close()
-    return clf.best_estimator_, pd.DataFrame(clf.cv_results_)
+    return clf.best_estimator_, pd.DataFrame(clf.cv_results_).round(4)
 
 
 print(set(test_set_Y) - set(training_set_Y))
@@ -144,7 +144,7 @@ filter_col = [col for col in table_results if col.startswith('params') or (col.e
     (col.endswith('precision') and col.startswith('mean')) or (col.endswith('recall') and col.startswith('mean'))]
 table_results = table_results[filter_col].fillna(0)
 print(table_results.head())
-
+table_results.replace(0.0, 0.0000)
 table_results.to_csv("./CSV/GaussianNB_metrics.csv")
 
 
@@ -167,6 +167,7 @@ filter_col = [col for col in table_results if col.startswith('params') or (col.e
     (col.endswith('precision') and col.startswith('mean')) or (col.endswith('recall') and col.startswith('mean'))]
 table_results = table_results[filter_col].fillna(0)
 print(table_results.head())
+table_results.replace(0.0, 0.0000)
 table_results.to_csv("./CSV/DecisionTree_metrics.csv")
 
 max_iters = (200,  400, 700)
@@ -185,6 +186,7 @@ if(save_models):
 filter_col = [col for col in table_results if col.startswith('params') or (col.endswith('f1') and col.startswith('mean')) or \
     (col.endswith('precision') and col.startswith('mean')) or (col.endswith('recall') and col.startswith('mean'))]
 table_results = table_results[filter_col].fillna(0)
+table_results.replace(0.0, 0.0000)
 print(table_results.head())
 table_results.to_csv("./CSV/MPLClassifier_metrics.csv")
 n_estimators_array = (100, 150, 200, 300)
@@ -203,6 +205,7 @@ if(save_models):
 filter_col = [col for col in table_results if col.startswith('params') or (col.endswith('f1') and col.startswith('mean')) or \
     (col.endswith('precision') and col.startswith('mean')) or (col.endswith('recall') and col.startswith('mean'))]
 table_results = table_results[filter_col].fillna(0)
+table_results.replace(0.0, 0.0000)
 print(table_results.head())
 table_results.to_csv("./CSV/RF_metrics.csv")
 #C_array=(1., 2., 3., 4.)
@@ -223,4 +226,5 @@ filter_col = [col for col in table_results if col.startswith('params') or (col.e
     (col.endswith('precision') and col.startswith('mean')) or (col.endswith('recall') and col.startswith('mean'))]
 table_results = table_results[filter_col].fillna(0)
 print(table_results.head())
+table_results.replace(0.0, 0.0000)
 table_results.to_csv("./CSV/SVC_metrics.csv")

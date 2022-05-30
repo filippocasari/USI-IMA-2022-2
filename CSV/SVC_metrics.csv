@@ -1,9 +1,9 @@
 ,params,mean_test_f1,mean_test_recall,mean_test_precision
 0,"{'loss': 'hinge', 'multi_class': 'ovr', 'penalty': 'l1'}",0.0,0.0,0.0
-1,"{'loss': 'hinge', 'multi_class': 'ovr', 'penalty': 'l2'}",0.30893162393162393,0.31999999999999995,0.40787878787878784
-2,"{'loss': 'hinge', 'multi_class': 'crammer_singer', 'penalty': 'l1'}",0.2557418048466642,0.2533333333333333,0.35148099027409374
-3,"{'loss': 'hinge', 'multi_class': 'crammer_singer', 'penalty': 'l2'}",0.36754029000537325,0.3466666666666667,0.43568243350852054
+1,"{'loss': 'hinge', 'multi_class': 'ovr', 'penalty': 'l2'}",0.3864,0.5833,0.3138
+2,"{'loss': 'hinge', 'multi_class': 'crammer_singer', 'penalty': 'l1'}",0.3169,0.2212,0.8
+3,"{'loss': 'hinge', 'multi_class': 'crammer_singer', 'penalty': 'l2'}",0.1399,0.1,0.29
 4,"{'loss': 'squared_hinge', 'multi_class': 'ovr', 'penalty': 'l1'}",0.0,0.0,0.0
-5,"{'loss': 'squared_hinge', 'multi_class': 'ovr', 'penalty': 'l2'}",0.1847953216374269,0.24,0.19420289855072462
-6,"{'loss': 'squared_hinge', 'multi_class': 'crammer_singer', 'penalty': 'l1'}",0.2891132551315618,0.27999999999999997,0.4136363636363637
-7,"{'loss': 'squared_hinge', 'multi_class': 'crammer_singer', 'penalty': 'l2'}",0.1835383819079471,0.16,0.23685383244206776
+5,"{'loss': 'squared_hinge', 'multi_class': 'ovr', 'penalty': 'l2'}",0.2805,0.45,0.2057
+6,"{'loss': 'squared_hinge', 'multi_class': 'crammer_singer', 'penalty': 'l1'}",0.2458,0.1682,0.7167
+7,"{'loss': 'squared_hinge', 'multi_class': 'crammer_singer', 'penalty': 'l2'}",0.2498,0.1864,0.6

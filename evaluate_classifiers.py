@@ -12,6 +12,7 @@ warnings.filterwarnings("ignore")
 path_models = './MODELS/'
 import numpy as np
 from sklearn.metrics import precision_recall_fscore_support
+
 def Cross_Validation_Scores(clf, X, y):
     """Cross Validation function. returns scores (f1 score, precision, recall)
 
@@ -238,9 +239,9 @@ if(saving_plot):
     models_f1.to_csv('f1_dataframe.csv')
     models_prec.to_csv('prec_dataframe.csv')
     models_rec.to_csv('rec_dataframe.csv')
-#df_f1.to_csv('f1_wilcoxon.csv')
-#df_rec.to_csv('rec_wilcoxon.csv')
-#df_prec.to_csv('prec_wilcoxon.csv')
+df_f1.to_csv('f1_wilcoxon.csv')
+df_rec.to_csv('rec_wilcoxon.csv')
+df_prec.to_csv('prec_wilcoxon.csv')
 
 
 

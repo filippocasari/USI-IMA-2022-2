@@ -1,180 +1,180 @@
 
 
-f1 couple [ Random Forest, MPL ], p value: 0.008439103776551535
+f1 couple [ Random Forest, MPL ], p value: 0.28171594901345653
 
-precision couple [ Random Forest, MPL ], p value: 0.008439103776551535
-recall couple [ Random Forest, MPL ], p value: 0.02184111826514225
+precision couple [ Random Forest, MPL ], p value: 0.28171594901345653
+recall couple [ Random Forest, MPL ], p value: 0.27314149633283646
 
 
-f1 couple [ Random Forest, SVC ], p value: 2.7642730349422216e-11
+f1 couple [ Random Forest, SVC ], p value: 1.7305203086290545e-08
 
-precision couple [ Random Forest, SVC ], p value: 2.7642730349422216e-11
-recall couple [ Random Forest, SVC ], p value: 3.1462883720038906e-08
+precision couple [ Random Forest, SVC ], p value: 1.7305203086290545e-08
+recall couple [ Random Forest, SVC ], p value: 0.016143390693517553
 
 
-f1 couple [ Random Forest, GaussNB ], p value: 1.5461164407996032e-06
+f1 couple [ Random Forest, GaussNB ], p value: 0.35434636632237204
 
-precision couple [ Random Forest, GaussNB ], p value: 1.5461164407996032e-06
-recall couple [ Random Forest, GaussNB ], p value: 0.00039606014820203414
+precision couple [ Random Forest, GaussNB ], p value: 0.35434636632237204
+recall couple [ Random Forest, GaussNB ], p value: 0.0002275788822248473
 
 
-f1 couple [ Random Forest, Decision Tree ], p value: 2.1575874143719274e-17
+f1 couple [ Random Forest, Decision Tree ], p value: 5.842097003496267e-08
 
-precision couple [ Random Forest, Decision Tree ], p value: 2.1575874143719274e-17
-recall couple [ Random Forest, Decision Tree ], p value: 0.011127243165931194
+precision couple [ Random Forest, Decision Tree ], p value: 5.842097003496267e-08
+recall couple [ Random Forest, Decision Tree ], p value: 0.04174000533879965
 
 
-f1 couple [ Random Forest, Bias Classifier ], p value: 1.876765638440519e-17
+f1 couple [ Random Forest, Bias Classifier ], p value: 4.333359668934525e-15
 
-precision couple [ Random Forest, Bias Classifier ], p value: 7.669625334297257e-18
-recall couple [ Random Forest, Bias Classifier ], p value: 2.060458371699702e-17
+precision couple [ Random Forest, Bias Classifier ], p value: 5.374142976807962e-17
+recall couple [ Random Forest, Bias Classifier ], p value: 1.4955694500381554e-16
 
 
-f1 couple [ MPL, Random Forest ], p value: 0.008439103776551535
+f1 couple [ MPL, Random Forest ], p value: 0.28171594901345653
 
-precision couple [ MPL, Random Forest ], p value: 0.008439103776551535
-recall couple [ MPL, Random Forest ], p value: 0.02184111826514225
+precision couple [ MPL, Random Forest ], p value: 0.28171594901345653
+recall couple [ MPL, Random Forest ], p value: 0.27314149633283646
 
 
-f1 couple [ MPL, SVC ], p value: 8.916470341092822e-09
+f1 couple [ MPL, SVC ], p value: 1.0476767845279683e-06
 
-precision couple [ MPL, SVC ], p value: 8.916470341092822e-09
-recall couple [ MPL, SVC ], p value: 1.870237765493451e-09
+precision couple [ MPL, SVC ], p value: 1.0476767845279683e-06
+recall couple [ MPL, SVC ], p value: 0.03973715340590845
 
 
-f1 couple [ MPL, GaussNB ], p value: 0.07072289815351267
+f1 couple [ MPL, GaussNB ], p value: 0.8736908760012193
 
-precision couple [ MPL, GaussNB ], p value: 0.07072289815351267
-recall couple [ MPL, GaussNB ], p value: 0.28888817453815985
+precision couple [ MPL, GaussNB ], p value: 0.8736908760012193
+recall couple [ MPL, GaussNB ], p value: 0.03518576000656084
 
 
-f1 couple [ MPL, Decision Tree ], p value: 1.626012840849143e-14
+f1 couple [ MPL, Decision Tree ], p value: 1.4514401701624365e-05
 
-precision couple [ MPL, Decision Tree ], p value: 1.626012840849143e-14
-recall couple [ MPL, Decision Tree ], p value: 0.9352703107801248
+precision couple [ MPL, Decision Tree ], p value: 1.4514401701624365e-05
+recall couple [ MPL, Decision Tree ], p value: 0.001806488811630472
 
 
-f1 couple [ MPL, Bias Classifier ], p value: 6.512935103467268e-12
+f1 couple [ MPL, Bias Classifier ], p value: 4.857277009962899e-11
 
-precision couple [ MPL, Bias Classifier ], p value: 7.910366391171378e-15
-recall couple [ MPL, Bias Classifier ], p value: 8.388173189688353e-14
+precision couple [ MPL, Bias Classifier ], p value: 6.710164045951113e-15
+recall couple [ MPL, Bias Classifier ], p value: 4.103805191373453e-16
 
 
-f1 couple [ SVC, Random Forest ], p value: 2.7642730349422216e-11
+f1 couple [ SVC, Random Forest ], p value: 1.7305203086290545e-08
 
-precision couple [ SVC, Random Forest ], p value: 2.7642730349422216e-11
-recall couple [ SVC, Random Forest ], p value: 3.1462883720038906e-08
+precision couple [ SVC, Random Forest ], p value: 1.7305203086290545e-08
+recall couple [ SVC, Random Forest ], p value: 0.016143390693517553
 
 
-f1 couple [ SVC, MPL ], p value: 8.916470341092822e-09
+f1 couple [ SVC, MPL ], p value: 1.0476767845279683e-06
 
-precision couple [ SVC, MPL ], p value: 8.916470341092822e-09
-recall couple [ SVC, MPL ], p value: 1.870237765493451e-09
+precision couple [ SVC, MPL ], p value: 1.0476767845279683e-06
+recall couple [ SVC, MPL ], p value: 0.03973715340590845
 
 
-f1 couple [ SVC, GaussNB ], p value: 8.182611026342815e-07
+f1 couple [ SVC, GaussNB ], p value: 2.672298762861321e-07
 
-precision couple [ SVC, GaussNB ], p value: 8.182611026342815e-07
-recall couple [ SVC, GaussNB ], p value: 8.959161560613317e-12
+precision couple [ SVC, GaussNB ], p value: 2.672298762861321e-07
+recall couple [ SVC, GaussNB ], p value: 0.16470086018588814
 
 
-f1 couple [ SVC, Decision Tree ], p value: 0.6173216538603616
+f1 couple [ SVC, Decision Tree ], p value: 0.0004017581540490085
 
-precision couple [ SVC, Decision Tree ], p value: 0.6173216538603616
-recall couple [ SVC, Decision Tree ], p value: 1.353651440443996e-10
+precision couple [ SVC, Decision Tree ], p value: 0.0004017581540490085
+recall couple [ SVC, Decision Tree ], p value: 0.001445648332571801
 
 
-f1 couple [ SVC, Bias Classifier ], p value: 0.011884614275466061
+f1 couple [ SVC, Bias Classifier ], p value: 0.011827085551826861
 
-precision couple [ SVC, Bias Classifier ], p value: 0.1697343796866405
-recall couple [ SVC, Bias Classifier ], p value: 7.852218056095903e-17
+precision couple [ SVC, Bias Classifier ], p value: 0.22418762535735437
+recall couple [ SVC, Bias Classifier ], p value: 2.9720361066100904e-09
 
 
-f1 couple [ GaussNB, Random Forest ], p value: 1.5461164407996032e-06
+f1 couple [ GaussNB, Random Forest ], p value: 0.35434636632237204
 
-precision couple [ GaussNB, Random Forest ], p value: 1.5461164407996032e-06
-recall couple [ GaussNB, Random Forest ], p value: 0.00039606014820203414
+precision couple [ GaussNB, Random Forest ], p value: 0.35434636632237204
+recall couple [ GaussNB, Random Forest ], p value: 0.0002275788822248473
 
 
-f1 couple [ GaussNB, MPL ], p value: 0.07072289815351267
+f1 couple [ GaussNB, MPL ], p value: 0.8736908760012193
 
-precision couple [ GaussNB, MPL ], p value: 0.07072289815351267
-recall couple [ GaussNB, MPL ], p value: 0.28888817453815985
+precision couple [ GaussNB, MPL ], p value: 0.8736908760012193
+recall couple [ GaussNB, MPL ], p value: 0.03518576000656084
 
 
-f1 couple [ GaussNB, SVC ], p value: 8.182611026342815e-07
+f1 couple [ GaussNB, SVC ], p value: 2.672298762861321e-07
 
-precision couple [ GaussNB, SVC ], p value: 8.182611026342815e-07
-recall couple [ GaussNB, SVC ], p value: 8.959161560613317e-12
+precision couple [ GaussNB, SVC ], p value: 2.672298762861321e-07
+recall couple [ GaussNB, SVC ], p value: 0.16470086018588814
 
 
-f1 couple [ GaussNB, Decision Tree ], p value: 1.899122482021806e-12
+f1 couple [ GaussNB, Decision Tree ], p value: 4.780577300905381e-05
 
-precision couple [ GaussNB, Decision Tree ], p value: 1.899122482021806e-12
-recall couple [ GaussNB, Decision Tree ], p value: 0.2268658424379294
+precision couple [ GaussNB, Decision Tree ], p value: 4.780577300905381e-05
+recall couple [ GaussNB, Decision Tree ], p value: 1.6679016661879306e-07
 
 
-f1 couple [ GaussNB, Bias Classifier ], p value: 1.5025638892749104e-10
+f1 couple [ GaussNB, Bias Classifier ], p value: 3.5362366251623123e-12
 
-precision couple [ GaussNB, Bias Classifier ], p value: 2.069772381767932e-13
-recall couple [ GaussNB, Bias Classifier ], p value: 1.4809194688877893e-13
+precision couple [ GaussNB, Bias Classifier ], p value: 1.0007603775888364e-14
+recall couple [ GaussNB, Bias Classifier ], p value: 1.0897182069748224e-17
 
 
-f1 couple [ Decision Tree, Random Forest ], p value: 2.1575874143719274e-17
+f1 couple [ Decision Tree, Random Forest ], p value: 5.842097003496267e-08
 
-precision couple [ Decision Tree, Random Forest ], p value: 2.1575874143719274e-17
-recall couple [ Decision Tree, Random Forest ], p value: 0.011127243165931194
+precision couple [ Decision Tree, Random Forest ], p value: 5.842097003496267e-08
+recall couple [ Decision Tree, Random Forest ], p value: 0.04174000533879965
 
 
-f1 couple [ Decision Tree, MPL ], p value: 1.626012840849143e-14
+f1 couple [ Decision Tree, MPL ], p value: 1.4514401701624365e-05
 
-precision couple [ Decision Tree, MPL ], p value: 1.626012840849143e-14
-recall couple [ Decision Tree, MPL ], p value: 0.9352703107801248
+precision couple [ Decision Tree, MPL ], p value: 1.4514401701624365e-05
+recall couple [ Decision Tree, MPL ], p value: 0.001806488811630472
 
 
-f1 couple [ Decision Tree, SVC ], p value: 0.6173216538603616
+f1 couple [ Decision Tree, SVC ], p value: 0.0004017581540490085
 
-precision couple [ Decision Tree, SVC ], p value: 0.6173216538603616
-recall couple [ Decision Tree, SVC ], p value: 1.353651440443996e-10
+precision couple [ Decision Tree, SVC ], p value: 0.0004017581540490085
+recall couple [ Decision Tree, SVC ], p value: 0.001445648332571801
 
 
-f1 couple [ Decision Tree, GaussNB ], p value: 1.899122482021806e-12
+f1 couple [ Decision Tree, GaussNB ], p value: 4.780577300905381e-05
 
-precision couple [ Decision Tree, GaussNB ], p value: 1.899122482021806e-12
-recall couple [ Decision Tree, GaussNB ], p value: 0.2268658424379294
+precision couple [ Decision Tree, GaussNB ], p value: 4.780577300905381e-05
+recall couple [ Decision Tree, GaussNB ], p value: 1.6679016661879306e-07
 
 
-f1 couple [ Decision Tree, Bias Classifier ], p value: 1.1822071372834533e-07
+f1 couple [ Decision Tree, Bias Classifier ], p value: 0.0017892892826995755
 
-precision couple [ Decision Tree, Bias Classifier ], p value: 0.026074350639731007
-recall couple [ Decision Tree, Bias Classifier ], p value: 9.335878187427376e-15
+precision couple [ Decision Tree, Bias Classifier ], p value: 1.8671656217136202e-09
+recall couple [ Decision Tree, Bias Classifier ], p value: 1.5817291281350938e-12
 
 
-f1 couple [ Bias Classifier, Random Forest ], p value: 1.876765638440519e-17
+f1 couple [ Bias Classifier, Random Forest ], p value: 4.333359668934525e-15
 
-precision couple [ Bias Classifier, Random Forest ], p value: 7.669625334297257e-18
-recall couple [ Bias Classifier, Random Forest ], p value: 2.060458371699702e-17
+precision couple [ Bias Classifier, Random Forest ], p value: 5.374142976807962e-17
+recall couple [ Bias Classifier, Random Forest ], p value: 1.4955694500381554e-16
 
 
-f1 couple [ Bias Classifier, MPL ], p value: 6.512935103467268e-12
+f1 couple [ Bias Classifier, MPL ], p value: 4.857277009962899e-11
 
-precision couple [ Bias Classifier, MPL ], p value: 7.910366391171378e-15
-recall couple [ Bias Classifier, MPL ], p value: 8.388173189688353e-14
+precision couple [ Bias Classifier, MPL ], p value: 6.710164045951113e-15
+recall couple [ Bias Classifier, MPL ], p value: 4.103805191373453e-16
 
 
-f1 couple [ Bias Classifier, SVC ], p value: 0.011884614275466061
+f1 couple [ Bias Classifier, SVC ], p value: 0.011827085551826861
 
-precision couple [ Bias Classifier, SVC ], p value: 0.1697343796866405
-recall couple [ Bias Classifier, SVC ], p value: 7.852218056095903e-17
+precision couple [ Bias Classifier, SVC ], p value: 0.22418762535735437
+recall couple [ Bias Classifier, SVC ], p value: 2.9720361066100904e-09
 
 
-f1 couple [ Bias Classifier, GaussNB ], p value: 1.5025638892749104e-10
+f1 couple [ Bias Classifier, GaussNB ], p value: 3.5362366251623123e-12
 
-precision couple [ Bias Classifier, GaussNB ], p value: 2.069772381767932e-13
-recall couple [ Bias Classifier, GaussNB ], p value: 1.4809194688877893e-13
+precision couple [ Bias Classifier, GaussNB ], p value: 1.0007603775888364e-14
+recall couple [ Bias Classifier, GaussNB ], p value: 1.0897182069748224e-17
 
 
-f1 couple [ Bias Classifier, Decision Tree ], p value: 1.1822071372834533e-07
+f1 couple [ Bias Classifier, Decision Tree ], p value: 0.0017892892826995755
 
-precision couple [ Bias Classifier, Decision Tree ], p value: 0.026074350639731007
-recall couple [ Bias Classifier, Decision Tree ], p value: 9.335878187427376e-15
+precision couple [ Bias Classifier, Decision Tree ], p value: 1.8671656217136202e-09
+recall couple [ Bias Classifier, Decision Tree ], p value: 1.5817291281350938e-12
